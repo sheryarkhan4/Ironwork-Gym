@@ -1,0 +1,41 @@
+
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+
+# Build files
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
+
+# Gym app data and secrets (never commit these)
+gym.db
+gym.db-shm
+gym.db-wal
+.session-secret
+backups/
+old-data/
+old data/
+members.json
+checkins.json
+users.json

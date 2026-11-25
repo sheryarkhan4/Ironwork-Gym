@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="dashboard" data-title="Dashboard" data-subtitle="Your gym at a glance">
+  <div id="content">
+
+    <section class="hero">
+      <div>
+        <h2 id="hero-title">Welcome back</h2>
+        <p id="hero-sub">Loading today's numbers...</p>
+      </div>
+      <div class="hero-actions">
+        <a class="btn btn-light" href="/checkin.html">Quick check-in</a>
+        <a class="btn btn-outline" href="/members.html#new">+ Add member</a>
+        <a class="btn btn-outline" href="/payments.html">Record payment</a>
+      </div>
+    </section>
+
+    <section class="grid-kpi">
+      <article class="kpi">
+        <span class="kpi-icon tone-blue">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </span>
+        <div class="kpi-body">
+          <p class="kpi-label">Active members</p>
+          <h3 class="kpi-value" id="kpi-active">-</h3>
+          <p class="kpi-sub" id="kpi-active-sub">&nbsp;</p>
+        </div>
+      </article>
+
+      <article class="kpi">
+        <span class="kpi-icon tone-green">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg>
+        </span>
+        <div class="kpi-body">
+          <p class="kpi-label">Revenue this month</p>
+          <h3 class="kpi-value" id="kpi-revenue">-</h3>
+          <p class="kpi-sub" id="kpi-revenue-sub">&nbsp;</p>
+        </div>
+      </article>
+
+      <article class="kpi">
+        <span class="kpi-icon tone-orange">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </span>
+        <div class="kpi-body">
+          <p class="kpi-label">Expiring in 7 days</p>
+          <h3 class="kpi-value" id="kpi-expiring">-</h3>
+          <p class="kpi-sub" id="kpi-expiring-sub">&nbsp;</p>
+        </div>
+      </article>
+
+      <article class="kpi">
+        <span class="kpi-icon tone-violet">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+        </span>
+        <div class="kpi-body">
+          <p class="kpi-label">Checked in today</p>
+          <h3 class="kpi-value" id="kpi-today">-</h3>
+          <p class="kpi-sub" id="kpi-today-sub">&nbsp;</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid-main">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Check-ins</h2>
+          <select id="range" aria-label="Date range">
+            <option value="7">Last 7 days</option>
+            <option value="14" selected>Last 14 days</option>
+            <option value="30">Last 30 days</option>
+            <option value="90">Last 90 days</option>
+          </select>
+        </div>
+        <div class="chart-box"><canvas id="checkins-chart"></canvas></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head"><h2>Members by plan</h2></div>
+        <div class="chart-box"><canvas id="plan-chart"></canvas></div>
+      </div>
+    </section>
+
+    <section class="grid-main">
+      <div class="panel">
+        <div class="panel-head"><h2>Revenue, last 6 months</h2></div>
+        <div class="chart-box"><canvas id="revenue-chart"></canvas></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Expiring soon</h2>
+          <a class="text-link" href="/members.html">View all</a>
+        </div>
+        <ul class="list" id="expiring-list"></ul>
+      </div>
+    </section>
+
+    <section class="grid-halves">
+      <div class="panel">
+        <div class="panel-head"><h2>Recent check-ins</h2></div>
+        <ul class="list" id="recent-list"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Gone quiet</h2>
+          <a class="text-link" href="/reports.html">See all</a>
+        </div>
+        <p class="page-msg" id="quiet-note"></p>
+        <ul class="list" id="quiet-list"></ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Membership status</h2></div>
+      <div class="bar-row"><span>Active</span><div class="bar bar-active"><i id="bar-active"></i></div><b id="n-active">0</b></div>
+      <div class="bar-row"><span>Expiring</span><div class="bar bar-expiring"><i id="bar-expiring"></i></div><b id="n-expiring">0</b></div>
+      <div class="bar-row"><span>Expired</span><div class="bar bar-expired"><i id="bar-expired"></i></div><b id="n-expired">0</b></div>
+      <div class="bar-row"><span>Frozen</span><div class="bar bar-frozen"><i id="bar-frozen"></i></div><b id="n-frozen">0</b></div>
+    </section>
+
+  </div>
+
+  <script src="common.js"></script>
+  <script src="layout.js"></script>
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

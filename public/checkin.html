@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Check-in - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="checkin" data-title="Quick check-in" data-subtitle="Type a name, phone or member code, or scan a card">
+  <div id="content">
+
+    <section class="grid-main">
+      <div class="panel">
+        <div class="panel-head"><h2>Check a member in</h2></div>
+
+        <label class="big-search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="text" id="q" placeholder="Name, phone or member code" autocomplete="off" autofocus>
+        </label>
+
+        <div class="scan-tools">
+          <button type="button" id="scan-btn" class="btn-ghost" hidden>Scan with camera</button>
+          <span id="scan-note" class="page-msg"></span>
+        </div>
+        <video id="scan-video" class="scan-video" playsinline muted hidden></video>
+
+        <div id="result" role="status" aria-live="polite"></div>
+        <ul class="list" id="matches"></ul>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Today</h2>
+          <span class="time-chip" id="today-count">0</span>
+        </div>
+        <ul class="list" id="today-list"></ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Walk-in day pass</h2>
+        <span class="muted" id="pass-price"></span>
+      </div>
+      <form id="pass-form" class="form-row">
+        <input type="text" id="pass-name" placeholder="Visitor name" maxlength="100" required>
+        <input type="tel" id="pass-phone" placeholder="Phone (optional)" autocomplete="off">
+        <select id="pass-method" aria-label="Payment method">
+          <option value="cash">Cash</option>
+          <option value="easypaisa">Easypaisa</option>
+          <option value="jazzcash">JazzCash</option>
+          <option value="card">Card</option>
+          <option value="transfer">Bank transfer</option>
+          <option value="other">Other</option>
+        </select>
+        <button type="submit" id="pass-btn">Sell day pass</button>
+      </form>
+      <p id="pass-msg" class="page-msg" role="status"></p>
+    </section>
+
+  </div>
+
+  <script src="common.js"></script>
+  <script src="layout.js"></script>
+  <script src="checkin.js"></script>
+</body>
+</html>

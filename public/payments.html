@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Payments - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="payments" data-title="Payments" data-subtitle="Record what members pay and print receipts">
+  <div id="content">
+
+    <section class="panel">
+      <div class="panel-head"><h2>Record a payment</h2></div>
+      <form id="pay-form" class="form-row">
+        <select id="p-member" aria-label="Member" required></select>
+        <input type="number" id="p-amount" placeholder="Amount (PKR)" min="0.01" step="0.01" required>
+        <input type="date" id="p-date" required>
+        <select id="p-method" aria-label="Method">
+          <option value="cash">Cash</option>
+          <option value="easypaisa">Easypaisa</option>
+          <option value="jazzcash">JazzCash</option>
+          <option value="card">Card</option>
+          <option value="transfer">Bank transfer</option>
+          <option value="other">Other</option>
+        </select>
+        <input type="text" id="p-note" placeholder="Note or transaction ID (optional)" maxlength="200">
+        <button type="submit">Record payment</button>
+      </form>
+      <p id="pay-msg" class="page-msg" role="status"></p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Payments</h2>
+        <div class="head-tools">
+          <input type="month" id="month" aria-label="Month">
+          <a href="/api/export/payments.csv" id="export-payments" class="btn btn-ghost" hidden>Export CSV</a>
+        </div>
+      </div>
+
+      <p class="page-msg">Total for this month: <strong id="month-total">-</strong></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th><th>Member</th><th>Amount</th><th>Method</th><th>Note</th><th>By</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="pay-body"></tbody>
+        </table>
+      </div>
+      <p id="pay-empty" class="empty" hidden>No payments this month.</p>
+    </section>
+
+  </div>
+
+  <script src="common.js"></script>
+  <script src="layout.js"></script>
+  <script src="payments.js"></script>
+</body>
+</html>

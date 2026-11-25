@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plans &amp; settings - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="settings" data-title="Plans &amp; settings" data-subtitle="Prices, durations and gym details">
+  <div id="content">
+
+    <section class="panel">
+      <div class="panel-head"><h2>Membership plans</h2></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Name</th><th>Price (PKR)</th><th>Days</th><th>Members</th><th></th></tr>
+          </thead>
+          <tbody id="plans-body"></tbody>
+        </table>
+      </div>
+
+      <div class="panel-head spaced-top"><h2>Add a plan</h2></div>
+      <form id="plan-form" class="form-row">
+        <input type="text" id="np-name" placeholder="Plan name" maxlength="30" required>
+        <input type="number" id="np-price" placeholder="Price (PKR)" min="0.01" step="0.01" required>
+        <input type="number" id="np-days" placeholder="Days" min="1" max="730" step="1" value="30" required>
+        <button type="submit">Add plan</button>
+      </form>
+      <p id="plan-msg" class="page-msg" role="status"></p>
+      <p class="page-msg">The price and days are filled in automatically when you renew a member. Renaming a plan updates everyone on it. A plan with members cannot be deleted.</p>
+    </section>
+
+    <section class="panel narrow">
+      <div class="panel-head"><h2>Gym details</h2></div>
+      <form id="settings-form" class="stack">
+        <div class="field">
+          <label for="s-name">Gym name (shown on receipts and cards)</label>
+          <input type="text" id="s-name" maxlength="60" required>
+        </div>
+        <div class="field">
+          <label for="s-pass">Day pass price (PKR)</label>
+          <input type="number" id="s-pass" min="0.01" step="0.01" required>
+        </div>
+        <div class="field">
+          <label for="s-quiet">Count a member as &ldquo;gone quiet&rdquo; after (days)</label>
+          <input type="number" id="s-quiet" min="1" max="365" step="1" required>
+        </div>
+        <button type="submit">Save settings</button>
+      </form>
+      <p id="settings-msg" class="page-msg" role="status"></p>
+    </section>
+
+  </div>
+
+  <script src="common.js"></script>
+  <script src="layout.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>

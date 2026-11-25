@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Member cards - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="members" data-title="Member cards" data-subtitle="Print barcode cards for scanning at the door">
+  <div id="content">
+
+    <section class="panel no-print">
+      <div class="panel-head">
+        <h2>Choose members</h2>
+        <div class="head-tools">
+          <select id="which" aria-label="Which members">
+            <option value="current">Active and expiring members</option>
+            <option value="all">All members</option>
+          </select>
+          <button type="button" id="print-btn">Print cards</button>
+        </div>
+      </div>
+      <p id="cards-note" class="page-msg"></p>
+    </section>
+
+    <section class="cards-sheet" id="sheet"></section>
+
+  </div>
+
+  <script src="common.js"></script>
+  <script src="layout.js"></script>
+  <script src="barcode.js"></script>
+  <script src="cards.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Staff - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="users" data-title="Staff" data-subtitle="Create accounts and manage who can do what">
+  <div id="content">
+
+    <section class="panel">
+      <div class="panel-head"><h2>Add an account</h2></div>
+      <form id="user-form" class="form-row">
+        <input type="text" id="u-name" placeholder="Username" autocomplete="off" required>
+        <input type="password" id="u-pass" placeholder="Password (8+ characters)" autocomplete="new-password" required>
+        <select id="u-role" aria-label="Role">
+          <option value="staff">Staff</option>
+          <option value="admin">Admin</option>
+        </select>
+        <button type="submit">Create account</button>
+      </form>
+      <p id="user-msg" class="page-msg" role="status"></p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Accounts</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Username</th><th>Role</th><th></th></tr>
+          </thead>
+          <tbody id="users-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <dialog id="pw-dialog">
+    <form id="pw-form">
+      <h2 id="pw-title">Reset password</h2>
+      <input type="password" id="pw-input" placeholder="New password (8+ characters)" autocomplete="new-password" required>
+      <p id="pw-error" class="login-error" role="alert"></p>
+      <div class="dialog-actions">
+        <button type="submit">Save</button>
+        <button type="button" id="pw-cancel" class="secondary-btn">Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="layout.js"></script>
+  <script src="users.js"></script>
+</body>
+</html>

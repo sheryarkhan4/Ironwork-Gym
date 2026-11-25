@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Import - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="import" data-title="Import members" data-subtitle="Bring in an existing member list from a spreadsheet">
+  <div id="content">
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>1. Prepare your file</h2>
+        <a class="btn btn-ghost" href="/api/import/template.csv">Download template</a>
+      </div>
+      <p>Save your sheet as <strong>CSV</strong> (in Excel: File, Save As, &ldquo;CSV UTF-8&rdquo;). It needs a header row with <strong>Name</strong>, <strong>Phone</strong> and <strong>Plan</strong>. <strong>End date</strong> is optional: when it is empty, the plan&rsquo;s length counted from today is used.</p>
+      <p class="page-msg">Dates can be written 2026-12-31 or 31/12/2026. Plan names must match your plans (any capital letters). Members with the same name and phone number are skipped.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>2. Choose the file and check it</h2></div>
+      <div class="form-row">
+        <input type="file" id="file" accept=".csv,text/csv">
+      </div>
+      <p id="import-msg" class="page-msg" role="status"></p>
+      <div class="import-summary" id="summary"></div>
+
+      <div class="table-wrap" id="preview-wrap" hidden>
+        <table>
+          <thead>
+            <tr><th>Line</th><th>Name</th><th>Phone</th><th>Plan</th><th>Ends</th><th>Result</th></tr>
+          </thead>
+          <tbody id="preview-body"></tbody>
+        </table>
+      </div>
+      <p id="truncated" class="page-msg" hidden>Only the first 500 rows are shown, but all rows are checked and imported.</p>
+
+      <div class="form-row">
+        <button type="button" id="commit-btn" hidden>Import</button>
+        <a class="btn btn-ghost" id="done-link" href="/members.html" hidden>View members</a>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="common.js"></script>
+  <script src="layout.js"></script>
+  <script src="import.js"></script>
+</body>
+</html>

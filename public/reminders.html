@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reminders - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="reminders" data-title="Reminders" data-subtitle="Members whose membership is about to expire">
+  <div id="content">
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Renewal reminders</h2>
+        <button type="button" id="run-btn" hidden>Send reminders now</button>
+      </div>
+
+      <p id="mode-note" class="page-msg"></p>
+      <p id="missing" class="banner warn" hidden></p>
+      <p id="rem-msg" class="page-msg" role="status"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Member</th><th>Phone</th><th>Ends</th><th>Status</th><th>Message</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="due-body"></tbody>
+        </table>
+      </div>
+      <p id="due-empty" class="empty" hidden>Nobody is due for a reminder right now.</p>
+    </section>
+
+    <section class="panel" id="history-panel" hidden>
+      <div class="panel-head"><h2>Message history</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>When</th><th>Member</th><th>Phone</th><th>Result</th><th>Sent by</th><th>Detail</th>
+            </tr>
+          </thead>
+          <tbody id="history-body"></tbody>
+        </table>
+      </div>
+      <p id="history-empty" class="empty" hidden>Nothing has been sent yet.</p>
+    </section>
+
+  </div>
+
+  <script src="layout.js"></script>
+  <script src="reminders.js"></script>
+</body>
+</html>

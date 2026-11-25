@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Log in - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="auth">
+    <section class="auth-brand">
+      <div class="brand">
+        <span class="brand-mark">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.5 6.5v11M17.5 6.5v11M3.5 9v6M20.5 9v6M6.5 12h11"/></svg>
+        </span>
+        <span class="brand-name">Iron<b>Works</b></span>
+      </div>
+      <h1>Run your gym with confidence.</h1>
+      <p>Members, check-ins, payments and renewal reminders, all in one place.</p>
+      <ul class="auth-points">
+        <li>Track memberships and see who is about to expire</li>
+        <li>Record payments by cash, Easypaisa or JazzCash</li>
+        <li>Remind members before they lapse</li>
+      </ul>
+    </section>
+
+    <section class="auth-form-wrap">
+      <form id="login-form" class="auth-card">
+        <h2>Welcome back</h2>
+        <p class="sub">Sign in to the staff dashboard.</p>
+
+        <div class="field">
+          <label for="username">Username</label>
+          <input type="text" id="username" autocomplete="username" required autofocus>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input type="password" id="password" autocomplete="current-password" required>
+        </div>
+
+        <button type="submit" id="login-btn">Log in</button>
+        <p id="login-error" class="login-error" role="alert"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="login.js"></script>
+</body>
+</html>

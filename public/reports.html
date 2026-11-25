@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reports - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="reports" data-title="Reports" data-subtitle="Revenue, attendance and who needs a nudge">
+  <div id="content">
+
+    <section class="panel no-print">
+      <div class="panel-head">
+        <h2>Monthly report</h2>
+        <div class="report-tools">
+          <input type="month" id="month" aria-label="Month">
+          <button type="button" id="print-btn" class="btn-ghost">Print</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-kpi">
+      <article class="kpi"><div class="kpi-body"><p class="kpi-label">Revenue</p><h3 class="kpi-value" id="r-revenue">-</h3><p class="kpi-sub" id="r-revenue-sub">&nbsp;</p></div></article>
+      <article class="kpi"><div class="kpi-body"><p class="kpi-label">New members</p><h3 class="kpi-value" id="r-new">-</h3><p class="kpi-sub">Joined this month</p></div></article>
+      <article class="kpi"><div class="kpi-body"><p class="kpi-label">Renewals</p><h3 class="kpi-value" id="r-renewals">-</h3><p class="kpi-sub">Memberships extended</p></div></article>
+      <article class="kpi"><div class="kpi-body"><p class="kpi-label">Lapsed</p><h3 class="kpi-value" id="r-lapsed">-</h3><p class="kpi-sub">Ended and not renewed</p></div></article>
+      <article class="kpi"><div class="kpi-body"><p class="kpi-label">Check-ins</p><h3 class="kpi-value" id="r-checkins">-</h3><p class="kpi-sub" id="r-checkins-sub">&nbsp;</p></div></article>
+      <article class="kpi"><div class="kpi-body"><p class="kpi-label">Day passes</p><h3 class="kpi-value" id="r-passes">-</h3><p class="kpi-sub">Walk-in visitors</p></div></article>
+    </section>
+
+    <section class="grid-main">
+      <div class="panel">
+        <div class="panel-head"><h2>Check-ins by day</h2></div>
+        <div class="chart-sm"><canvas id="daily-chart"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Revenue by method</h2></div>
+        <div class="chart-sm"><canvas id="method-chart"></canvas></div>
+        <ul class="list" id="method-list"></ul>
+      </div>
+    </section>
+
+    <section class="grid-halves">
+      <div class="panel">
+        <div class="panel-head"><h2>Revenue by plan</h2></div>
+        <div class="chart-sm"><canvas id="plan-chart"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h2>Plan breakdown</h2></div>
+        <ul class="list" id="plan-list"></ul>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Peak hours</h2>
+        <select id="heat-days" aria-label="Period">
+          <option value="30">Last 30 days</option>
+          <option value="90" selected>Last 90 days</option>
+          <option value="180">Last 180 days</option>
+        </select>
+      </div>
+      <p class="page-msg" id="heat-note"></p>
+      <div class="heat"><div class="heat-grid" id="heat"></div></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Members who stopped coming</h2>
+        <div class="head-tools no-print">
+          <label class="muted" for="quiet-days">No visit in</label>
+          <input type="number" id="quiet-days" class="inline-input narrow-input" min="1" max="365" step="1">
+          <span class="muted">days</span>
+        </div>
+      </div>
+      <p class="page-msg" id="quiet-note"></p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Member</th><th>Plan</th><th>Last visit</th><th></th></tr></thead>
+          <tbody id="quiet-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="common.js"></script>
+  <script src="layout.js"></script>
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script src="reports.js"></script>
+</body>
+</html>

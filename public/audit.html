@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Audit log - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="features.css">
+</head>
+<body data-page="audit" data-title="Audit log" data-subtitle="Who did what, and when">
+  <div id="content">
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Activity</h2>
+        <select id="action-filter" aria-label="Filter by action">
+          <option value="">All actions</option>
+          <option value="login">Logins</option>
+          <option value="login.failed">Failed logins</option>
+          <option value="login.locked">Lockouts</option>
+          <option value="logout">Logouts</option>
+          <option value="member.create">Member added</option>
+          <option value="member.update">Member edited</option>
+          <option value="member.renew">Member renewed</option>
+          <option value="member.freeze">Member frozen</option>
+          <option value="member.unfreeze">Member unfrozen</option>
+          <option value="member.cancel">Member cancelled</option>
+          <option value="member.photo">Member photo</option>
+          <option value="member.delete">Member deleted</option>
+          <option value="members.import">Members imported</option>
+          <option value="checkin">Check-ins</option>
+          <option value="daypass.sell">Day passes sold</option>
+          <option value="payment.create">Payment recorded</option>
+          <option value="payment.delete">Payment voided</option>
+          <option value="plan.create">Plan added</option>
+          <option value="plan.update">Plan changed</option>
+          <option value="plan.delete">Plan deleted</option>
+          <option value="settings.update">Settings changed</option>
+          <option value="reminders.run">Reminders sent</option>
+          <option value="reminders.mark">Reminder marked contacted</option>
+          <option value="export">CSV exports</option>
+          <option value="user.create">Account created</option>
+          <option value="user.role">Role changed</option>
+          <option value="user.password">Password reset</option>
+          <option value="user.password.self">Own password changed</option>
+          <option value="user.password.failed">Wrong current password</option>
+          <option value="user.delete">Account deleted</option>
+        </select>
+      </div>
+
+      <p id="audit-msg" class="page-msg" role="status"></p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>When</th><th>User</th><th>Action</th><th>Target</th><th>Details</th><th>IP</th>
+            </tr>
+          </thead>
+          <tbody id="audit-body"></tbody>
+        </table>
+      </div>
+
+      <p id="audit-empty" class="empty" hidden>No entries yet.</p>
+      <button type="button" id="more-btn" class="secondary-btn" hidden>Load more</button>
+    </section>
+
+  </div>
+
+  <script src="layout.js"></script>
+  <script src="audit.js"></script>
+</body>
+</html>

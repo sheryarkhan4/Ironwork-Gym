@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My account - IronWorks Gym</title>
+  <script src="theme.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="account" data-title="My account" data-subtitle="Keep your login secure">
+  <div id="content">
+
+    <section class="panel narrow">
+      <div class="panel-head"><h2>Change my password</h2></div>
+      <p id="who" class="page-msg"></p>
+
+      <form id="pw-form" class="stack">
+        <div class="field">
+          <label for="current">Current password</label>
+          <input type="password" id="current" autocomplete="current-password" required>
+        </div>
+        <div class="field">
+          <label for="next">New password (8+ characters)</label>
+          <input type="password" id="next" autocomplete="new-password" required>
+        </div>
+        <div class="field">
+          <label for="again">Repeat new password</label>
+          <input type="password" id="again" autocomplete="new-password" required>
+        </div>
+        <button type="submit">Change password</button>
+        <p id="pw-msg" class="login-error" role="alert"></p>
+      </form>
+    </section>
+
+  </div>
+
+  <script src="layout.js"></script>
+  <script src="account.js"></script>
+</body>
+</html>
